@@ -1,0 +1,17 @@
+
+int minMoves(int arr[], int n, int k)
+{
+    int count = 0 ;
+    for(int i =1 ; i<n ; i++)
+    {
+        if(arr[i]>arr[i-1])
+        {
+           int diff = arr[i]-arr[i-1];
+           int temp = diff%k==0 ? diff/k : (diff/k)+1 ;
+           count += temp ;
+           arr[i]=arr[i]-(temp*k) ;
+        }
+    }
+    
+    return count%(1000000000+7) ;
+}

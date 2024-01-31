@@ -1,0 +1,39 @@
+class Solution {
+public:
+    long long dividePlayers(vector<int>& skill) 
+    {
+        sort(skill.begin(),skill.end());
+        long long sum = 0 ;
+        long long n = skill.size()/2 ;
+        for(int i = 0 ; i<skill.size() ; i++)
+        {
+            sum += skill[i];
+        }
+        int temp = sum /n ;
+        // map<int , int>ans ;
+        vector<int>ans1 ;
+        vector<int>ans2 ;
+        int start = 0 , end = skill.size()-1 ;
+        while(start<end)
+        {
+            if(skill[start]+skill[end]!=temp)
+            {
+                return -1 ;
+            }
+            else 
+            {
+                // ans[skill[start]]=skill[end] ;
+                ans1.push_back(skill[start]);
+                ans2.push_back(skill[end]);
+            }
+            start++ ;
+            end-- ;
+        }
+        long long xxx = 0 ;
+        for(int i = 0 ; i<ans1.size() ;i++)
+        {
+            xxx += ans1[i] * ans2[i] ;
+        }
+        return xxx ;
+    }
+};

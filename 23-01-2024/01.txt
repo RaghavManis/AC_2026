@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isHappy(int n) 
+    {
+        int val ;
+        int index ;
+        set<int>ans ; 
+        while(1)
+        {
+            val = 0 ;
+            while(n>0)
+            {
+                index = n%10 ;
+                val += index * index ;
+                n /= 10 ;
+            }
+            if(val==1) return true ;
+            else if (ans.find(val) != ans.end()) return false ;
+            ans.insert(val);
+            n=val ;
+        }
+        return false ;
+    }
+};
